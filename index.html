@@ -1,0 +1,137 @@
+<!doctype html>
+ <html>
+      <head>
+         <style>
+        img{
+            height:350px;
+            width:250px;
+        }
+        input{
+            width:50px;
+
+        }
+        div{
+            background-color:#f2f2f2;
+            height:450;
+            width:350px;
+            box-shadow: 10px 10px 5px ;
+        }
+        h1{
+             text-shadow: 2px 2px dodgerblue;
+        }
+        input{
+            width:50px;
+
+
+        }
+         </style>
+         <script>
+         /*
+         Nov.6,2017
+         Angelica Vazquez
+         skateboard
+         */
+             
+          //function for board prices  
+            var pr1=15, wp1=5;
+            var pr2=14, wp2=5;
+            var pr3=20, wp3=10;
+            var pr4=15, wp4=7;
+            var taxrate=0.0875;
+
+          function skate(){
+            
+              document.getElementById("span1").innerHTML="Price=$"+pr1;
+              document.getElementById("span2").innerHTML="Price=$"+pr2;
+              document.getElementById("span3").innerHTML="Price=$"+pr3;
+              document.getElementById("span4").innerHTML="Price=$"+pr4;
+          }
+          function processorder(){
+             //shipping
+              var shipping=0;
+              //subtotal
+              var subtotal=pr1 +pr2+pr3+pr4;
+              //company subtotal
+              var companysub=(pr1-wp1)+(pr2-wp2)+(pr3-wp3)+(pr4-wp4);
+              //profit
+              var profit=subtotal-companysub;
+              //tax
+              var tax=subtotal*taxrate;
+              
+              //if statement for the shipping price
+              if (subtotal<100){
+                  shipping=25;
+              }else if(subtotal>100 && subtotal<200) {
+                  shipping=10
+              }else{
+                  shipping=0
+              }
+              
+              
+              tax=tax.toFixed(2);
+              var output= document.getElementById("output");
+              output.innerHTML="******CUSTOMER ORDER DETAILS******<br>" +
+                               "__________________________________<br>" + 
+                               "Tax:                              $"+tax+"<br>"+
+                               "Total:                            $"+subtotal.toFixed(2)+"<br>"+
+                               "******COMPANY ORDER DETAILS******<br>"+
+                               "__________________________________<br>"+
+                               "Profit:                           $"+profit.toFixed(2)+"<br>";
+              
+          }
+         </script>
+      </head>
+         <body>
+             <h1 style="font-size:60px;color:maroon;">Vazquez Skateboards</h1>
+             
+              <body onload="skate()">
+                  
+             <!--item 1-->
+             
+             <div class="col-sm-4">
+             <img src="pic1.jpg" ></br>
+             <p> Santa Cruz Thrasher Hand Skateboard Deck</p>
+             <span id="span1"></span>
+             <input type="number" id="qty1"min="1" max="100" placeholder="qty">
+             
+             </div>
+             <!--item 2-->
+             <br>
+              <div class="col-sm-4">
+             <img src="pic2.jpg"></br>
+             <p>Bart Simpson Penny Board </p>
+             <span id="span2"></span>
+             <input type="number" id="qty2"min="1" max="100"placeholder="qty">
+             </div>
+             <!--item 3-->
+             <br>
+              <div class="col-sm-4">
+             <img src="pic3.jpg"></br>
+             <p> Santa Cruz Thrasher Hand and Blue Ribbon Can Long Board Deck</p>
+             <span id="span3"></span>
+             <input type="number" id="qty3"min="1"  max="100" placeholder="qty">
+             </div>
+             <!--item 4-->
+             <br>
+              <div class="col-sm-4">
+             <img src="pic4.jpg"></br>
+             <p> Zombie Blind Skateboard Deck</p>
+             <span id="span4"></span>
+             <input type="number"  id="qty4" min="1" max="100" placeholder="qty">
+             <div>
+             <!--button -->
+             <button onclick="processorder()" >SUBTOTAL</button>
+             <div id="processorder()"></div>
+             </div>
+             
+             </div>
+             
+            
+            
+            
+            <div id="output"></div>
+             
+         
+         </body>
+
+    </html>
